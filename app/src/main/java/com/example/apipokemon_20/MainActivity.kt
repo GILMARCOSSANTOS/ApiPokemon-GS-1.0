@@ -56,12 +56,12 @@ class MainActivity : AppCompatActivity() {
                     responseUseres?.let {
                         listPokemon.addAll(listOf(it))
                         adapterPokemon?.notifyDataSetChanged()
-                        println("Resposta da API = " + responseUseres)
+                        println("Resposta de Conexão da API = " + responseUseres)
                     }
                 }
 
                 override fun onFailure(call: Call<PokemonModelJson>, t: Throwable) {
-                    Log.e("Error", t.localizedMessage)
+                    Log.e("Resposta de Erro da API = ", t.localizedMessage)
                 }
             })
     }
