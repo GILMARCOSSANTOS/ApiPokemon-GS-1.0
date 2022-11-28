@@ -17,7 +17,7 @@ import java.util.Collections.addAll
 class MainActivity : AppCompatActivity() {
 
     /* Variáveis de Escopo Global: */
-    private var listPokemon: MutableList<PokemonModelJson> = mutableListOf<PokemonModelJson>()
+   private var listPokemon: MutableList<PokemonModelJson> = mutableListOf<PokemonModelJson>()
     private var adapterPokemon: PokemonAdapter? = null
     private lateinit var recyclerViewPokemon: RecyclerView
 
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         listPokemon = mutableListOf()
         recyclerViewPokemon = findViewById(R.id.rcclrVw_actvtMain_id)
 
-        recyclerViewPokemon.layoutManager = LinearLayoutManager(this@MainActivity)
+        recyclerViewPokemon.layoutManager = LinearLayoutManager(this)
         adapterPokemon = PokemonAdapter(
             this,
             listPokemon
@@ -45,21 +45,22 @@ class MainActivity : AppCompatActivity() {
     private fun getUsersApi() {
         ApiUrlBase.apiServicePokemon.getPokemonUrlRelative()
             .enqueue(object :
-                Callback<MutableList<PokemonModelJson>> {
+                Callback<PokemonModelJson> {
+
                 override fun onResponse(
-                    call: Call<MutableList<PokemonModelJson>>,
-                    response: Response<MutableList<PokemonModelJson>>
+                    call: Call<PokemonModelJson>,
+                    response: Response<PokemonModelJson>
                 ) {
                     val responseUseres = response.body()
                     listPokemon.clear()
                     responseUseres?.let {
-                        listPokemon.addAll(it)
+                        listPokemon.addAll(listOf(it))
                         adapterPokemon?.notifyDataSetChanged()
                         println("Resposta da API = " + responseUseres)
                     }
                 }
 
-                override fun onFailure(call: Call<MutableList<PokemonModelJson>>, t: Throwable) {
+                override fun onFailure(call: Call<PokemonModelJson>, t: Throwable) {
                     Log.e("Error", t.localizedMessage)
                 }
             })

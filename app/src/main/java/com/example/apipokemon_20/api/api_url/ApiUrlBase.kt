@@ -35,5 +35,4 @@ object ApiUrlBase {
     val apiServicePokemon: ApiUrlRelative by lazy {
         retrofit.create(ApiUrlRelative::class.java)
     }
-
 }

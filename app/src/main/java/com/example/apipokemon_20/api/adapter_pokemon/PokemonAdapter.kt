@@ -10,9 +10,9 @@ import com.example.apipokemon_20.R
 import com.example.apipokemon_20.api.model_json.PokemonModelJson
 
 class PokemonAdapter (private val context: Context, private var listPokemonJson:
-MutableList<PokemonModelJson>): RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
+List<PokemonModelJson>): RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
 
-    class PokemonViewHolder(var view: View): RecyclerView.ViewHolder(view) {
+    class PokemonViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
         var namePokemon: TextView? = null
 
@@ -29,12 +29,11 @@ MutableList<PokemonModelJson>): RecyclerView.Adapter<PokemonAdapter.PokemonViewH
     }
 
     override fun onBindViewHolder(holder:PokemonViewHolder, position: Int) {
-       var listPokemon = listPokemonJson.get(position)
+       var listPokemon = listPokemonJson[position]
         holder.namePokemon?.text = listPokemon.name
     }
 
     override fun getItemCount(): Int {
         return listPokemonJson.size
     }
-
 }
