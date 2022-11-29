@@ -29,7 +29,8 @@ List<PokemonModelJson>): RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>(
     }
 
     override fun onBindViewHolder(holder:PokemonViewHolder, position: Int) {
-       var listPokemon = listPokemonJson[position]
+      // val listPokemon = listPokemonJson[position]
+        val listPokemon = listPokemonJson.get(position)
         holder.namePokemon?.text = listPokemon.name
     }
 

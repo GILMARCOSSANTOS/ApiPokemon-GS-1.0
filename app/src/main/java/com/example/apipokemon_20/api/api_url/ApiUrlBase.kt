@@ -10,7 +10,7 @@ import retrofit2.create
 
 object ApiUrlBase {
 
-    private const val BASE_URL: String = "https://jsonplaceholder.typicode.com/"
+    private const val BASE_URL: String = "https://pokeapi.co/api/v2/"
 
     private val gson: Gson by lazy {
         GsonBuilder().setLenient().create()
