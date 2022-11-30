@@ -18,7 +18,6 @@ List<PokemonModelJson>): RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>(
 
         init {
             namePokemon = view.findViewById(R.id.txtVw_namePokemon_rcclrVwActcvtMain_id)
-
         }
     }
 
