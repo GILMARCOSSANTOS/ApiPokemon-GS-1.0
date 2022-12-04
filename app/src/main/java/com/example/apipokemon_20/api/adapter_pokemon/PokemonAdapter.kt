@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.apipokemon_20.R
 import com.example.apipokemon_20.api.model_json.PokemonModelJson
 
+
+
 class PokemonAdapter(private val context: Context, private val items: List<PokemonModelJson?>
 
 ): RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
@@ -26,7 +28,10 @@ class PokemonAdapter(private val context: Context, private val items: List<Pokem
         // val listPokemon = listPokemonJson[position]
         val listPokemon = items.get(position)
        // val lisResult =
-        holder.namePokemon?.text = listPokemon?.results?.name
+       // holder.namePokemon?.text = listPokemon?.results?.name
+        if (listPokemon != null) {
+            holder.namePokemon?.text = listPokemon?.results?.name
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {

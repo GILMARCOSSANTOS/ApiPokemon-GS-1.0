@@ -11,5 +11,5 @@ data class PokemonModelJson(
     @SerializedName("previous")
     val previous: Any,
     @SerializedName("results")
-    val results: Result? = null
+    val results: List<Result>
 )
