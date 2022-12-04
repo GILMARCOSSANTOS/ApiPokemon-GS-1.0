@@ -3,7 +3,6 @@ package com.example.apipokemon_20
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.apipokemon_20.api.adapter_pokemon.PokemonAdapter
@@ -12,12 +11,13 @@ import com.example.apipokemon_20.api.model_json.PokemonModelJson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.Collections.addAll
 
 class MainActivity : AppCompatActivity() {
 
     /* Variáveis de Escopo Global: */
-   private var listPokemon: MutableList<PokemonModelJson> = mutableListOf<PokemonModelJson>()
+    private var listPokemon: MutableList<PokemonModelJson> = mutableListOf<PokemonModelJson>()
+
+    //    private lateinit var listPokemon: PokemonModelJson
     private var adapterPokemon: PokemonAdapter? = null
     private lateinit var recyclerViewPokemon: RecyclerView
 
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun settingsRecyclerViewUsers() {
-        listPokemon = mutableListOf()
+        //   listPokemon = mutableListOf()
         recyclerViewPokemon = findViewById(R.id.rcclrVw_actvtMain_id)
 
         recyclerViewPokemon.layoutManager = LinearLayoutManager(this)
@@ -44,25 +44,49 @@ class MainActivity : AppCompatActivity() {
 
     private fun getUsersApi() {
         ApiUrlBase.apiServicePokemon.getPokemonUrlRelative()
-            .enqueue(object :
-                Callback<PokemonModelJson> {
-
+            .enqueue(object : Callback<MutableList<PokemonModelJson>> {
                 override fun onResponse(
-                    call: Call<PokemonModelJson>,
-                    response: Response<PokemonModelJson>
+                    call: Call<MutableList<PokemonModelJson>>,
+                    response: Response<MutableList<PokemonModelJson>>
                 ) {
                     val responseUseres = response.body()
                     listPokemon.clear()
                     responseUseres?.let {
-                        listPokemon.addAll(listOf(it))
+                        listPokemon.addAll(it)
                         adapterPokemon?.notifyDataSetChanged()
-                        println("Resposta de Conexão da API = " + responseUseres)
+                        println("Resposta da API = " + responseUseres)
                     }
                 }
 
-                override fun onFailure(call: Call<PokemonModelJson>, t: Throwable) {
+                override fun onFailure(call: Call<MutableList<PokemonModelJson>>, t: Throwable) {
                     Log.e("Resposta de Erro da API = ", t.localizedMessage)
                 }
+
             })
+
+
     }
+
 }
+
+
+//            .enqueue(object : Callback<PokemonModelJson>{
+//                override fun onResponse(
+//                    call: Call<PokemonModelJson>,
+//                    response: Response<PokemonModelJson>
+//                ) {
+//                    val responseUseres = response.body()
+//                    listPokemon.clear()
+//                    responseUseres?.let {
+//                        listPokemon.addAll(listOf(it))
+//                        adapterPokemon?.notifyDataSetChanged()
+//                        println("Resposta de Conexão da API = " + responseUseres)
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<PokemonModelJson>, t: Throwable) {
+//                    Log.e("Resposta de Erro da API = ", t.localizedMessage)
+//                }
+//
+//            })
+

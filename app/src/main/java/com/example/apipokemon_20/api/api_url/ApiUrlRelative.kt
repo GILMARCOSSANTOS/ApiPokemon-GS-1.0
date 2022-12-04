@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface ApiUrlRelative {
     @GET("pokemon")
-    fun getPokemonUrlRelative(): Call<PokemonModelJson>
+    fun getPokemonUrlRelative(): Call<MutableList<PokemonModelJson>>
 }

@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.apipokemon_20.R
 import com.example.apipokemon_20.api.model_json.PokemonModelJson
 
-class PokemonAdapter (private val context: Context, private var listPokemonJson:
-List<PokemonModelJson>): RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
+class PokemonAdapter(private val context: Context, private val items: List<PokemonModelJson?>
+
+): RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
 
     class PokemonViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
@@ -21,19 +22,20 @@ List<PokemonModelJson>): RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>(
         }
     }
 
+    override fun onBindViewHolder(holder:PokemonViewHolder, position: Int) {
+        // val listPokemon = listPokemonJson[position]
+        val listPokemon = items.get(position)
+       // val lisResult =
+        holder.namePokemon?.text = listPokemon?.results?.name
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
         val inflater = LayoutInflater.from(context)
         val view: View = inflater.inflate(R.layout.itens_rcclrvw_actvtmain, parent, false)
         return PokemonViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder:PokemonViewHolder, position: Int) {
-      // val listPokemon = listPokemonJson[position]
-        val listPokemon = listPokemonJson.get(position)
-        holder.namePokemon?.text = listPokemon.name
-    }
-
     override fun getItemCount(): Int {
-        return listPokemonJson.size
+        return items.size
     }
 }
