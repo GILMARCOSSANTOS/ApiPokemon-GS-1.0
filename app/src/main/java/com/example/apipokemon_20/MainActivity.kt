@@ -45,51 +45,7 @@ class MainActivity : AppCompatActivity() {
     private fun getUsersApi() {
         ApiUrlBase.apiServicePokemon.getPokemonUrlRelative()
             .enqueue(object : Callback<PokemonModelJson> {
-//                override fun onResponse(
-//                    call: Call<List<PokemonModelJson>>,
-//                    response: Response<MutableList<PokemonModelJson>>
-//                ) {
-//
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<MutableList<PokemonModelJson>>, t: Throwable) {
-//
-//                }
 
-                //                override fun onResponse(
-//                    call: Call<List<PokemonModelJson>>,
-//                    response: Response<List<PokemonModelJson>>
-//                ) {
-//                    val responseUseres = response.body()
-//                    listPokemon.clear()
-//                    responseUseres?.let {
-//                        listPokemon.addAll(it)
-//                        adapterPokemon?.notifyDataSetChanged()
-//                        println("Resposta da API = " + responseUseres)
-//                    }
-//
-//                    override fun onFailure(call: Call<List<PokemonModelJson>>, t: Throwable) {
-//                        Log.e("Resposta de Erro da API = ", t.localizedMessage)
-//                    }
-//                })
-//            }
-//                override fun onResponse(
-//                    call: Call<List<PokemonModelJson>>,
-//                    response: Response<List<PokemonModelJson>>
-//                ) {
-//                    val responseUseres = response.body()
-//                    listPokemon.clear()
-//                    responseUseres?.let {
-//                        listPokemon.addAll(it)
-//                        adapterPokemon?.notifyDataSetChanged()
-//                        println("Resposta da API = " + responseUseres)
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<List<PokemonModelJson>>, t: Throwable) {
-//                    Log.e("Resposta de Erro da API = ", t.localizedMessage)
-//                }
 
                 override fun onResponse(
                     call: Call<PokemonModelJson>,
@@ -114,24 +70,4 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-//            .enqueue(object : Callback<PokemonModelJson>{
-//                override fun onResponse(
-//                    call: Call<PokemonModelJson>,
-//                    response: Response<PokemonModelJson>
-//                ) {
-//                    val responseUseres = response.body()
-//                    listPokemon.clear()
-//                    responseUseres?.let {
-//                        listPokemon.addAll(listOf(it))
-//                        adapterPokemon?.notifyDataSetChanged()
-//                        println("Resposta de Conexão da API = " + responseUseres)
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<PokemonModelJson>, t: Throwable) {
-//                    Log.e("Resposta de Erro da API = ", t.localizedMessage)
-//                }
-//
-//            })
 

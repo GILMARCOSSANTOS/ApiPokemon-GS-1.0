@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.apipokemon_20.R
 import com.example.apipokemon_20.api.model_json.PokemonModelJson
 
-class PokemonAdapter(private val context: Context, private var items: List<PokemonModelJson?>
+class PokemonAdapter(
+    private val context: Context, private var items: List<PokemonModelJson?>
 
-): RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
 
-    class PokemonViewHolder(view: View): RecyclerView.ViewHolder(view) {
+) : RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
+
+    class PokemonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         var namePokemon: TextView? = null
 
@@ -22,10 +24,11 @@ class PokemonAdapter(private val context: Context, private var items: List<Pokem
         }
     }
 
-    override fun onBindViewHolder(holder:PokemonViewHolder, position: Int) {
-               val listPokemon = items.get(position)
+    override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
+        val listPokemon = items.get(position)
         if (listPokemon != null) {
-            holder.namePokemon?.text = listPokemon.results.toString()
+           // holder.namePokemon?.text = listPokemon.count.toString()
+           holder.namePokemon?.text = listPokemon.results.get(position).name?.uppercase()
         }
     }
 
