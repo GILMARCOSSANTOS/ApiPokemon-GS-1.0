@@ -11,8 +11,6 @@ import com.example.apipokemon_20.api.model_json.PokemonModelJson
 
 class PokemonAdapter(
     private val context: Context, private var items: List<PokemonModelJson?>
-
-
 ) : RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
 
     class PokemonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
